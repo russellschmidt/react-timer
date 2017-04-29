@@ -7,7 +7,7 @@ var OpenWeatherMap = require("OpenWeatherMap");
 var Weather = React.createClass({
   getInitialState: function () {
     return {
-      isLoading: false
+      isLoading: false,
     }
   },
   handleOnSearch: function (location) {
