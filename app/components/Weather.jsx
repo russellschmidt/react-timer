@@ -8,6 +8,7 @@ var Weather = React.createClass({
   getInitialState: function () {
     return {
       isLoading: false,
+      unit: 'F'
     }
   },
   handleOnSearch: function (location) {
@@ -17,7 +18,7 @@ var Weather = React.createClass({
       isLoading: true
     });
 
-    OpenWeatherMap.getTemp(location).then(function(returnObj) {
+    OpenWeatherMap.getTemp(location, this.state.unit).then(function(returnObj) {
       that.setState({
         location: returnObj.name,
         temp: returnObj.temp,
