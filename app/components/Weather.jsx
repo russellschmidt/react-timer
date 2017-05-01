@@ -34,6 +34,34 @@ var Weather = React.createClass({
     });
   },
   handleOnUnits: function (units) {
+    var oldTemp = this.state.temp;
+
+    if (this.state.units === 'K' && units === 'C') {
+      this.setState({
+        temp: Math.round((oldTemp - 273.15)*100)/100
+      });
+    } else if (this.state.units === 'C' && units === 'K') {
+      this.setState({
+        temp: Math.round((oldTemp + 273.15)*100)/100
+      });
+    } else if (this.state.units === 'K' && units === 'F') {
+      this.setState({
+        temp: Math.round((oldTemp * (9/5) - 459.67)*100)/100
+      });
+    } else if (this.state.units === 'F' && units === 'K') {
+      this.setState({
+        temp: Math.round(((oldTemp + 459.67) * (5/9))*100)/100
+      });
+    } else if (this.state.units === 'C' && units === 'F') {
+      this.setState({
+        temp: Math.round((oldTemp * (9/5) + 32)*100)/100
+      });
+    } else if (this.state.units === 'F' && units === 'C') {
+      this.setState({
+        temp: Math.round(((oldTemp - 32) * (5/9))*100)/100
+      })
+    }
+
     this.setState({
       units: units
     });
