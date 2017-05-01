@@ -15,10 +15,16 @@ var WeatherUnits = React.createClass({
   },
   render: function() {
     return (
-      <div>
-        <button onClick={this.onMetric}>Celsius</button>
-        <button onClick={this.onImperial}>Fahrenheit</button>
-        <button onClick={this.onKelvin}>Kelvin</button>
+      <div className="row">
+        <div className="columns small-4">
+          <button className="button success hollow expanded" onClick={this.onMetric}>Celsius</button>
+        </div>
+        <div className="columns small-4">
+          <button className="button success hollow expanded" onClick={this.onImperial}>Fahrenheit</button>
+        </div>
+        <div className="columns small-4">
+          <button className="button success hollow expanded" onClick={this.onKelvin}>Kelvin</button>
+        </div>
       </div>
     )
   }
