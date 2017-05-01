@@ -1,16 +1,24 @@
 var axios = require('axios');
 
-const OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/weather?appid=ac306d43eb353bda3bd97430ccb2f10d&units=imperial';
+const OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/weather?appid=ac306d43eb353bda3bd97430ccb2f10d';
+const METRIC = '&units=metric';
+const IMPERIAL = '&units=imperial';
 
-// api key ac306d43eb353bda3bd97430ccb2f10d
 
 
 module.exports = {
-  getTemp: function (location) {
+  getTemp: function (location, units) {
     var encodedLocation = encodeURIComponent(location);
     // template strings
     var requestUrl = `${OPEN_WEATHER_MAP_URL}&q=${encodedLocation}`;
     var returnObj = {};
+
+    // if units === 'k' omit the url query
+    if (units === 'F') {
+      requestUrl += IMPERIAL;
+    } else if (units === 'C') {
+      requestUrl += METRIC;
+    }
 
     return axios.get(requestUrl).then(function (res) {
       // handle idiosyncratic errors in openWeatherMap
