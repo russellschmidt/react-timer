@@ -1,10 +1,9 @@
 var React = require("react");
-var {Link} = require("react-router");
 
 var About = (props) => {
   return (
     <div>
-      <h1 className="text-centered">About</h1>
+      <h1 className="text-center">About</h1>
       <p>Learn more about this little app</p>
       <ol>
         <li>
@@ -18,6 +17,12 @@ var About = (props) => {
         </li>
         <li>
           <a href="https://www.udemy.com/the-complete-react-web-app-developer-course">Udemy Inspiration</a>
+        </li>
+        <li>
+          <a href="https://facebook.github.io/react">Learn About React</a>
+        </li>
+        <li>
+          <a href="http://www.openweathermap.org">OpenWeatherMap API</a>
         </li>
       </ol>
     </div>
