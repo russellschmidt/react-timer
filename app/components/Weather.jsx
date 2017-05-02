@@ -4,6 +4,7 @@ var WeatherForm = require("WeatherForm");
 var WeatherMessage = require("WeatherMessage");
 var OpenWeatherMap = require("OpenWeatherMap");
 var WeatherUnits = require("WeatherUnits");
+var ErrorModal = require("ErrorModal");
 
 var Weather = React.createClass({
   getInitialState: function () {
@@ -16,7 +17,8 @@ var Weather = React.createClass({
     var that = this;
 
     this.setState({
-      isLoading: true
+      isLoading: true,
+      errorMessage: undefined
     });
 
     OpenWeatherMap.getTemp(location, this.state.units).then(function(returnObj) {
@@ -28,9 +30,9 @@ var Weather = React.createClass({
     }, function(err){
       that.setState({
         isLoading: false,
-        location: ''
+        location: '',
+        errorMessage: err.message
       });
-      alert(err);
     });
   },
   handleOnUnits: function (units) {
@@ -67,7 +69,7 @@ var Weather = React.createClass({
     });
   },
   render: function () {
-    var {temp, location, isLoading, units} = this.state;
+    var {temp, location, isLoading, units, errorMessage} = this.state;
 
     function renderMessage () {
       if (isLoading) {
@@ -77,7 +79,15 @@ var Weather = React.createClass({
       } else {
         return <p></p>;
       }
-    };
+    }
+
+    function renderError() {
+      if (typeof errorMessage === "string") {
+        return (
+          <ErrorModal/>
+        );
+      }
+    }
 
     return (
       <div>
@@ -85,6 +95,7 @@ var Weather = React.createClass({
         <WeatherForm onSearch={this.handleOnSearch}/>
         {renderMessage()}
         <WeatherUnits onUnits={this.handleOnUnits}/>
+        {renderError()}
       </div>
     );
   }
