@@ -1,1 +1,2 @@
-#React Weather Application
+#React Timer App
+Timer and Countdown clock

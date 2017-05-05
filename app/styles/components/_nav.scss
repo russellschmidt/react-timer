@@ -1,0 +1,15 @@
+// nav.scss
+.top-bar, .top-bar ul {
+  background-color: $nav-background;
+}
+
+.top-bar {
+  .menu-text {
+    color: $nav-text-color;
+  }
+
+  .menu>li>a {
+    display: inline;
+    padding: 0;
+  }
+}

@@ -1,50 +1,32 @@
-var React = require("react");
-var {Link, IndexLink} = require("react-router");
+var React = require('react');
+var {Link, IndexLink} = require('react-router');
 
-var Nav = React.createClass({
-  onSearch: function (e) {
-    e.preventDefault();
-
-    var location = this.refs.location.value;
-    var encodedLocation = encodeURIComponent(location);
-    if (location.length > 0) {
-      this.refs.location.value = '';
-      window.location.hash = '#/?location=' + encodedLocation;
-    }
-  },
-  render: function() {
-    return (
-      <div className="top-bar">
-        <div className="top-bar-left">
-          <ul className="menu">
-            <li className="menu-text">Weather Time!</li>
-            <li>
-              <IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Get Weather</IndexLink>
-            </li>
-            <li>
-              <Link to="/about" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>About</Link>
-            </li>
-            <li>
-              <Link to="/examples" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Example</Link>
-            </li>
-          </ul>
-        </div>
-        <div className="top-bar-right">
-          <form onSubmit={this.onSearch}>
-            <ul className="menu">
-              <li>
-                <input type="search" ref="location" placeholder="Search weather by city"/>
-              </li>
-              <li>
-                <input type="submit" className="button" value="Get Weather"/>
-              </li>
-            </ul>
-          </form>
-        </div>
-
+var Nav = () => {
+  return (
+    <nav className="top-bar">
+      <div className="top-bar-left">
+        <ul className="menu">
+          <li className="menu-text">
+            ReactTimer
+          </li>
+          <li>
+            <IndexLink to="/" activeClassName="active-link active">Timer</IndexLink>
+          </li>
+          <li>
+            <Link to="/" activeClassName="active-link active">Countdown</Link>
+          </li>
+        </ul>
       </div>
-    );
-  }
-});
+      <div className="top-bar-right">
+        <ul className="menu">
+          <li className="menu-text">
+            Built by <a href="https://russellschmidt.net" target="_blank">Russell Schmidt</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+};
+
 
 module.exports = Nav;
