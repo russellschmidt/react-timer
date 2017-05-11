@@ -1,5 +1,12 @@
 // Main Style Sheet  styles/app.scss
 @import "base/variables";
+
+// foundation
+@import "components/foundation-settings";
+@import "foundation";
+@include foundation-everything;
+
+// components
 @import "components/nav";
 @import "components/clock";
 @import "components/controls";
